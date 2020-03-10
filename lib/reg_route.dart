@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'package:badges/badges.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
+import 'package:qud/database.dart';
 import 'package:qud/notifiche_route.dart';
 import 'package:qud/reg_dettaglio.dart';
 import 'package:qud/registrazione.dart';
@@ -31,6 +33,7 @@ class _RegistrazioneRouteState extends State<RegistrazioneRoute> {
       new GlobalKey<RefreshIndicatorState>();
 
   List<Registrazione> registrazioni = [];
+  var listaNotifiche = [];
 
   @override
   Widget build(BuildContext context) {
@@ -47,14 +50,17 @@ class _RegistrazioneRouteState extends State<RegistrazioneRoute> {
           centerTitle: true,
           actions: <Widget>[
             // action button
-            IconButton(
-              icon: Icon(
-                Icons.notifications,
-                color: Colors.yellow,
+            Badge(
+              badgeContent: Text(listaNotifiche.length.toString(), style: TextStyle(color: Colors.white),),
+              child: IconButton(
+                icon: Icon(
+                  Icons.notifications,
+                  color: Colors.yellow,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(NotificheRoute.routeName);
+                },
               ),
-              onPressed: () {
-                Navigator.of(context).pushNamed(NotificheRoute.routeName);
-              },
             ),
             IconButton(
                 icon: const Icon(Icons.refresh),
@@ -96,6 +102,7 @@ class _RegistrazioneRouteState extends State<RegistrazioneRoute> {
     super.initState();
     WidgetsBinding.instance
         .addPostFrameCallback((_) => _refreshIndicatorKey.currentState.show());
+    caricaNotifiche();
   }
 
   Future<List<Registrazione>> getRegistrazioni() async {
@@ -111,5 +118,15 @@ class _RegistrazioneRouteState extends State<RegistrazioneRoute> {
       });
     } else
       throw Exception('Failed to load confraternite');
+  }
+
+  void caricaNotifiche() async {
+    var notifiche = await Database.get('notifiche');
+    if (notifiche == null) {
+      notifiche = [];
+    }
+    setState(() {
+      listaNotifiche = notifiche;
+    });
   }
 }
