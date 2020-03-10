@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1019727473579-pmcn2ollmeoruff6f9qitsgij46dc8ep.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1019727473579-pmcn2ollmeoruff6f9qitsgij46dc8ep</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1019727473579-bibd00cme58ekve4volfs9d6pn1eam2r.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD9Y5bFxLAwuYVO00pqvHnmzuv6Z0_UYhw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1019727473579</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>it.dariocast.qud</string>
+	<key>PROJECT_ID</key>
+	<string>quisutdeus-33187</string>
+	<key>STORAGE_BUCKET</key>
+	<string>quisutdeus-33187.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1019727473579:ios:bcb078a6f70a1723a940ee</string>
+	<key>DATABASE_URL</key>
+	<string>https://quisutdeus-33187.firebaseio.com</string>
+</dict>
+</plist>
