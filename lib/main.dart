@@ -1,11 +1,22 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
+import 'package:qud/firebase_messaging_handler.dart';
 import 'package:qud/reg_route.dart';
 import 'package:qud/notifiche_route.dart';
 import 'package:qud/reg_dettaglio.dart';
 
-void main() => runApp(MyApp());
+import 'database.dart';
+
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  var notifiche = await Database.get('notifiche');
+  if (notifiche == null) {
+    notifiche = [];
+    Database.put('notifiche', notifiche);
+  }
+  runApp(MyApp());
+}
 
 
 class MyApp extends StatelessWidget {
@@ -14,6 +25,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    new FirebaseNotifications().setUpFirebase();
     return MaterialApp(
       navigatorObservers: [
         FirebaseAnalyticsObserver(analytics: analytics),
