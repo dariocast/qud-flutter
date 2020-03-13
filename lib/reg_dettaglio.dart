@@ -72,6 +72,7 @@ class _RegistrazioneDettaglioRouteState
           size: 20,
           padding: EdgeInsets.only(top: 8.0, bottom: 16.0),
         ),
+        text('${registrazione.luogo}', size: 15),
         text('${registrazione.data}', size: 15)
       ],
     );
