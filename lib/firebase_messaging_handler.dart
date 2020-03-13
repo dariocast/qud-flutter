@@ -24,9 +24,6 @@ class FirebaseNotifications {
       onMessage: (Map<String, dynamic> message) async {
         print('on message $message');
         var notifiche = await Database.get('notifiche');
-        if (notifiche == null) {
-          notifiche = [];
-        }
         String toStore = json.encode(message);
         notifiche.add(toStore);
         await Database.put('notifiche', notifiche);
@@ -34,9 +31,6 @@ class FirebaseNotifications {
       onResume: (Map<String, dynamic> message) async {
         print('on resume $message');
         var notifiche = await Database.get('notifiche');
-        if (notifiche == null) {
-          notifiche = [];
-        }
         String toStore = json.encode(message);
         notifiche.add(toStore);
         await Database.put('notifiche', notifiche);
@@ -44,9 +38,6 @@ class FirebaseNotifications {
       onLaunch: (Map<String, dynamic> message) async {
         print('on launch $message');
         var notifiche = await Database.get('notifiche');
-        if (notifiche == null) {
-          notifiche = [];
-        }
         String toStore = json.encode(message);
         notifiche.add(toStore);
         await Database.put('notifiche', notifiche);
@@ -61,5 +52,28 @@ class FirebaseNotifications {
         .listen((IosNotificationSettings settings) {
       print("Settings registered: $settings");
     });
+  }
+}
+
+Future<dynamic> _backgroundMessageHandler(Map<String, dynamic> message) async {
+  print("_backgroundMessageHandler");
+  if (message.containsKey('data')) {
+    // Handle data message
+    final dynamic data = message['data'];
+    print("_backgroundMessageHandler data: ${data}");
+    var notifiche = await Database.get('notifiche');
+    String toStore = json.encode(message);
+    notifiche.add(toStore);
+    await Database.put('notifiche', notifiche);
+  }
+
+  if (message.containsKey('notification')) {
+    // Handle notification message
+    final dynamic notification = message['notification'];
+    print("_backgroundMessageHandler notification: ${notification}");
+    var notifiche = await Database.get('notifiche');
+    String toStore = json.encode(message);
+    notifiche.add(toStore);
+    await Database.put('notifiche', notifiche);
   }
 }

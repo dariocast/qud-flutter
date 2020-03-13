@@ -6,7 +6,17 @@ import 'package:qud/reg_route.dart';
 import 'package:qud/notifiche_route.dart';
 import 'package:qud/reg_dettaglio.dart';
 
-void main() => runApp(MyApp());
+import 'database.dart';
+
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  var notifiche = await Database.get('notifiche');
+  if (notifiche == null) {
+    notifiche = [];
+    Database.put('notifiche', notifiche);
+  }
+  runApp(MyApp());
+}
 
 
 class MyApp extends StatelessWidget {

@@ -49,19 +49,19 @@ class _RegistrazioneRouteState extends State<RegistrazioneRoute> {
           leading: Image(image: AssetImage('assets/icon/icon.png')),
           centerTitle: true,
           actions: <Widget>[
-            // action button
-            Badge(
-              badgeContent: Text(listaNotifiche.length.toString(), style: TextStyle(color: Colors.white),),
-              child: IconButton(
-                icon: Icon(
-                  Icons.notifications,
-                  color: Colors.yellow,
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(NotificheRoute.routeName);
-                },
-              ),
-            ),
+//            // action button
+//            Badge(
+//              badgeContent: Text(listaNotifiche.length.toString(), style: TextStyle(color: Colors.white),),
+//              child: IconButton(
+//                icon: Icon(
+//                  Icons.notifications,
+//                  color: Colors.yellow,
+//                ),
+//                onPressed: () {
+//                  Navigator.of(context).pushNamed(NotificheRoute.routeName);
+//                },
+//              ),
+//            ),
             IconButton(
                 icon: const Icon(Icons.refresh),
                 tooltip: 'Refresh',
@@ -103,6 +103,7 @@ class _RegistrazioneRouteState extends State<RegistrazioneRoute> {
     WidgetsBinding.instance
         .addPostFrameCallback((_) => _refreshIndicatorKey.currentState.show());
     caricaNotifiche();
+
   }
 
   Future<List<Registrazione>> getRegistrazioni() async {

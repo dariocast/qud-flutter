@@ -51,13 +51,11 @@ class _NotificheRouteState extends State<NotificheRoute> {
 
   void caricaNotifiche() async {
     var notifiche = await Database.get('notifiche');
-    if (notifiche == null) {
-      notifiche = [];
+    if (notifiche.isNotEmpty) {
+      setState(() {
+        listaNotifiche = notifiche;
+      });
     }
-    setState(() {
-      listaNotifiche = notifiche;
-    });
-
   }
 
   void _rimuovi(int index) async {
